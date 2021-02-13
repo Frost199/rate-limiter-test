@@ -4,7 +4,7 @@ This example test shows how to implement a rate limiter with Flask and redis.
 
 ### How to set up the project
 * First make sure you have python 3 installed on your computer, preferably python 3.6+ and above.
-* Then proceed to installing docker and docker-compose. docker-compose will help manage multiple images to be run.
+* Then proceed to installing [docker](https://docs.docker.com/engine/install/) and [docker-compose](https://docs.docker.com/compose/install/). docker-compose will help manage multiple images to be run.
 * Then clone this project ```git clone https://github.com/Frost199/rate-limiter-test.git```
 * cd into the base directory.
 
