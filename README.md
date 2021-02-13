@@ -1,6 +1,14 @@
 # rate-limiter-test
 
 This example test shows how to implement a rate limiter with Flask and redis.  
+
+Content:
+* [:notebook_with_decorative_cover: Overview](#notebook_with_decorative_cover-overview)
+* [:gear: Installation and running server](#gear-installation-and-running-server)
+* [:key: Response](#key-response)
+* [:nerd_face: Advanced](#nerd_face-advanced)
+
+### :notebook_with_decorative_cover: Project Description
 The rate-limiting algorithm implemented is the **Token Bucket** algorithm.
 
 The rate_limit decorator in the **app.py** file has a default of __50__ request in **1 hour** _(50 requests/hour)_.  
@@ -16,6 +24,8 @@ def home():
         "data": "Hello User"
     }), 200
 ```
+
+## :gear: Installation and running server
 
 ### How to set up the project
 * First make sure you have python 3 installed on your computer, preferably python 3.6+ and above.
@@ -47,7 +57,7 @@ curl http://127.0.0.1:8000/second-page
 ```
 
 
-## Response
+## :key: Response
 
 The response object from each endpoint returns either a 200 OK, or a 403 forbidden status code 
 
@@ -69,3 +79,26 @@ The response object from each endpoint returns either a 200 OK, or a 403 forbidd
 }
 ```
 
+## :nerd_face: Advanced
+
+THere is a class provided called **RateLimitingMiddleware**
+
+This helps to configure your rate limiting accross the whole app for a bigger project.
+
+### How to use
+
+import the module
+```python
+from util.middleware import RateLimitingMiddleware
+```
+
+apply the flask wsgi in your **app.py**
+```python
+from flask import Flask
+from util.middleware import RateLimitingMiddleware
+
+app = Flask(__name__)
+app.wsgi_app = RateLimitingMiddleware(app.wsgi_app, limit=4, per=30, send_x_headers=True)
+```
+
+This will apply the RateLimitingMiddleware for all requests automatically.
