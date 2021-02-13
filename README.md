@@ -81,7 +81,7 @@ The response object from each endpoint returns either a 200 OK, or a 403 forbidd
 
 ## :nerd_face: Advanced
 
-THere is a class provided called **RateLimitingMiddleware**
+There is a class provided called **RateLimitingMiddleware**
 
 This helps to configure your rate limiting accross the whole app for a bigger project.
 
@@ -101,4 +101,4 @@ app = Flask(__name__)
 app.wsgi_app = RateLimitingMiddleware(app.wsgi_app, limit=4, per=30, send_x_headers=True)
 ```
 
-This will apply the RateLimitingMiddleware for all requests automatically.
+This will apply the RateLimitingMiddleware for all requests automatically without using the _@rate_limit_ decorator
