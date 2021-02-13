@@ -49,7 +49,7 @@ curl http://127.0.0.1:8000/second-page
 
 ## Response
 
-The response object from each endpoint returns either a 200 OK, or a 403 unauthorized status code 
+The response object from each endpoint returns either a 200 OK, or a 403 forbidden status code 
 
 #### Success
 
