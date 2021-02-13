@@ -5,7 +5,7 @@ from flask import request, g, Response
 from util.rate_limit import RateLimit
 
 
-def rate_limit(limit, per=300, send_x_headers=True, over_limit=RateLimit.on_over_limit,
+def rate_limit(limit=50, per=3600, send_x_headers=True, over_limit=RateLimit.on_over_limit,
                scope_function=lambda: request.remote_addr, key_function=lambda: request.endpoint):
 
     def rate_limit_decorator(f):

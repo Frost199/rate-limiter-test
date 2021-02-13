@@ -1,6 +1,21 @@
 # rate-limiter-test
 
-This example test shows how to implement a rate limiter with Flask and redis.
+This example test shows how to implement a rate limiter with Flask and redis.  
+The rate-limiting algorithm implemented is the **Token Bucket** algorithm.
+
+The rate_limit decorator in the **app.py** file has a default of __50__ request in **1 hour** _(50 requests/hour)_.  
+
+This can be overridden when using the decorator ``@rate_limit``, an example is in the *app.py*
+
+```python
+@app.route('/', methods=['GET'])
+@rate_limit(limit=4, per=30, send_x_headers=True)
+def home():
+    return jsonify({
+        "success": "200",
+        "data": "Hello User"
+    }), 200
+```
 
 ### How to set up the project
 * First make sure you have python 3 installed on your computer, preferably python 3.6+ and above.
